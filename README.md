@@ -1,46 +1,34 @@
-# Getting Started with Create React App
+**storyBook**
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+1- Aqui inicializo pero lo que veo no es el localHost sino un entorno que me ofrece _storybook_
+2- voy a crear en **src** un folder llamado componentes donde pondre todos los componentes que quiero crear.
+3- voy al folder stories y sigo la estructura del folder componentes ya creado, aquí en stories crere un folder llamado tambien componentes donde ire agregando los componentes que cree pero le agrego la palabra stories. Esta file nos ayudara a ver mi file tsx en la plataforma de _storybook_. Pero para ellos debo llevar a cabo una estructura.
+4- entro al file creado con la palabra stories y uno el componente con storybook para ellos debo hacer los sigueinte:
 
-## Available Scripts
+A- el default es un objeto que contendra el title, que es como quiero que luzca mi directorio, puedo agragar varios niveles.
+B- component que quiero ver en ese path determinado en el title
+C- creo una instancia de mi componente
+D- voy creando copias de mi instancia, cada una me aparecera como una nueva opción en en storybook y cada una puede tener caracteristicas distintas.
 
-In the project directory, you can run:
+```
+import { MyLabel } from '../../components/MyLabel';
 
-### `npm start`
+export default {
+  title: 'UI/MyLabel',
+  componets: MyLabel,
+};
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+const Template = () => <MyLabel />;
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+export const MyLabeBasic = Template.bind({});
+export const MyLabeMedio = Template.bind({});
+export const MyLabePro = Template.bind({});
 
-### `npm test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+```
 
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+**AGREGAR PROPS**
+1- Creo una interface, en el componente como haría normalemnte en Ts.
+2- Voy al MyLabel.stories.tsx y aquí esta el punto mas importante
+3- Agrego las interfaces ComponentMeta<typeof MyLabel>; y ComponentStory<typeof MyLabel> lo que le dirá al **StoryBookk** que le estoy pasando.
+4- Le paso al componente los argumentos
