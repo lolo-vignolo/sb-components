@@ -48,3 +48,9 @@ controlColor.args = {
   size: 'h1',
   customerFontColor: '#5517ac',
 };
+export const uppercase = Template.bind({});
+uppercase.args = {
+  label: 'default Label',
+  size: 'normal',
+  allCaps: true,
+};
